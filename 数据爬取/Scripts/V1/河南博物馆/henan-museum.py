@@ -79,7 +79,7 @@ def output_to_csv(collections):
 	df.to_csv('henan-collections.csv',
 	          index_label='id',
 	          columns=['name', 'type', 'time', 'collectionUrl', 'imgUrl'],
-	          header=['Name', 'Type', 'Time', 'Collection URL', 'Image URL'],
+	          header=['name', 'type', 'time', 'collectionURL', 'imageURL'],
 	          encoding='utf-8-sig')
 
 
