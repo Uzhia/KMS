@@ -1,0 +1,71 @@
+建议：对照具体数据来看数据字段
+
+陕西博物馆：
+id_collection：文物编号（自己定的，好方便管理），和下载的图片命名有关
+name：名字
+time：时间
+leve：文物等级
+location(仅镇馆之宝有)：文物出土地点
+size：尺寸
+material：材料
+describe(仅镇馆之宝有)：文物描述
+relic_url：文物详情页链接
+img_url：文物图片下载链接
+
+卢浮宫：数据大多是法语（卢浮宫在法国），字段名字都是原文（除了id_collection），英文
+id_collection：文物编号（自己定的，好方便管理）
+
+Inventory number：文物在卢浮宫的库存编号
+Collection：写了文物收集在卢浮宫的哪个部门
+Artist/maker / School / Artistic centre：艺术家/制作人 / 学校 / 艺术中心    、
+
+下面是有关描述的4个字段
+Object name/Title：对象名称/标题
+Type of object：对象类型  举例：盘子
+Description/Features：描述/特征
+Inscriptions：铭文
+
+下面是有关物理特性的2个字段
+Dimensions：大小
+Materials and techniques：材料和技术
+
+下面是有关地点和日期的2个字段
+Date：日期
+Place of origin：原产地
+
+下面是有关历史的5个字段
+Collector / Previous owner / Commissioner / Archaeologist / Dedicatee：收藏家 / 前任所有者 / 专员 / 考古学家 / 奉献
+Acquisition details：收购细节
+Acquisition date：收购日期
+Owned by：拥有者
+Held by:持有者
+
+下面是有关对象的位置的1个字段
+Current location：文物目前位置
+
+下面是有关索引的4个字段，索引字段与上面有重合部分
+Mode d'acquisition：获取模式（就是怎么获得这件文物的）
+Period：时期
+Places：地点（文物来源的地点）大多数都是 亚洲 - 东亚 = 远东 - 中国
+Type：文物类型 比如 餐桌艺术-餐具-盘子
+
+relic_url：文物详情页链接
+img_url：文物图片下载链接
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
