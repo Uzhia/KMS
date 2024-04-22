@@ -11,6 +11,7 @@ import config
 from retrying import retry
 
 
+@retry(stop_max_attempt_number=5, wait_fixed=2000)
 def get_collections_on_page(base_url, headers, page_index: int):
 	collections = []
 	page_url = f'{base_url}&p={page_index}'
@@ -34,6 +35,7 @@ def get_all_collections(base_url, headers):
 	return collections
 
 
+@retry(stop_max_attempt_number=5, wait_fixed=2000)
 def get_collection_info(api_url, collection_id):
 	raw_data = requests.get(f'{api_url}{collection_id}').json()
 	if 'opacObjectFieldSets' not in raw_data:
