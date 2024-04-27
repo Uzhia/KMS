@@ -33,4 +33,5 @@ COLUMNS_MAP = {
 DATA_BASE_PATH = "../../Data/Raw Data"
 HENAN_MUSEUM_PATH = f"{DATA_BASE_PATH}/henan-collections.csv"
 AUCKLAND_MUSEUM_PATH = f"{DATA_BASE_PATH}/auckland-museum-collections.csv"
-PROCESSED_DATA_PATH = "../../Data/Processed Data"
+PROCESSED_DATA_PATH = "../../Data/Processed"
+MERGED_DATA_PATH = "../../Data/Final/merged-data.csv"
