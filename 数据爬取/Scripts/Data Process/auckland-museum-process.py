@@ -73,11 +73,8 @@ def process_data(datas):
 def main():
 	datas = get_data()
 	new_datas = process_data(datas)
-	for data in new_datas:
-		print(data)
-
 	df = pd.DataFrame(new_datas)
-	df.to_csv("aukland-processed.csv", index_label='id', columns=config.COLUMNS,
+	df.to_csv(config.AUCKLAND_MUSEUM_PROCESSED_PATH, index_label='id', columns=config.COLUMNS,
 	          encoding='utf-8-sig')
 
 

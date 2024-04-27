@@ -38,7 +38,7 @@ def main():
 	datas = get_data()
 	new_datas = process_data(datas)
 	df = pd.DataFrame(new_datas)
-	df.to_csv("henan-processed.csv", index_label='id', columns=config.COLUMNS,
+	df.to_csv(config.HENAN_MUSEUM_PROCESSED_PATH, index_label='id', columns=config.COLUMNS,
 	          encoding='utf-8-sig')
 
 
