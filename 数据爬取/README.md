@@ -3,7 +3,7 @@
 >  **说明：**
 > * Data目录下为数据爬取的结果
 > * Scripts目录下为爬取数据的脚本，V1目录下为第一版脚本，如后期有更新就在V2目录下更新
->* 陕西博物馆：
+> * 陕西博物馆：
 name：名字
 time：时间 例子：秦
 leve：文物等级 例子：一级文物
@@ -13,7 +13,7 @@ material：材料 例子：铜器
 describe(仅镇馆之宝有)：文物描述 
 relic_url：文物详情页链接
 img_url：文物图片下载链接
->*卢浮宫：
+> *卢浮宫：
 Artist/maker / School / Artistic centre：艺术家/制作人 / 学校 / 艺术中心 例子：中国，景德镇车间？
 Object name/Title：对象名称/标题 ：例子中国瓷花瓶
 Type of object：对象类型  举例：盘子
