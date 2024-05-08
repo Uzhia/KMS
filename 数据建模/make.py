@@ -31,7 +31,7 @@ with open('merged-data.csv', 'r', encoding='utf-8') as file:
             times[row[1]] = 1
         if times[row[1]] > 1:
             row[1] = row[1] + str(times[row[1]])
-        print(row[1])
+        #print(row[1])
         info_tmp = []
         #保存文物对应的详细信息
         for x in indexs_details:
@@ -71,7 +71,6 @@ with open('triples.txt', 'r', encoding='utf-8') as file:
 unique_entities = list(set(entity_h + entity_t))
 
 entity1 = set(entity_h)  # 将所有entity_h中的实体添加到entity1中
-print(len(entity1))
 # 保存节点文件
 with open("entities.csv", "w", newline='', encoding='utf-8') as csvf_entity:
     w_entity = csv.writer(csvf_entity)
