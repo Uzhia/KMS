@@ -49,8 +49,6 @@ with open('triples.txt', 'w', encoding='utf-8') as output_file:
         output_line = '\t'.join(triple) + '\n'
         output_file.write(output_line)
 
-#============================================================================
-
 # 初始化三个空列表，用于保存三元组的每一列
 #entity_h中存放的都是文物节点，role中存放关系，entity_t存放的是其他类型的节点，例如年代，藏品等级等
 entity_h = []
