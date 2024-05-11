@@ -33,7 +33,7 @@ with open('data.csv', 'r', encoding='utf-8') as file:
             times[row[1]] = 1
         if times[row[1]] > 1:
             row[1] = row[1] + str(times[row[1]])
-        relic_id[row[1]] = id
+        relic_id[row[1]] = row[0]
         id += 1
         #print(row[1])
         info_tmp = []
