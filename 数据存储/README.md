@@ -13,8 +13,6 @@
 
 ### 建表
 
-`artifacts`与`artifacts2`表结构相同。
-
 其中:
 
 - `artifacts`的csv数据为`final.csv`
@@ -22,29 +20,45 @@
 
 ```sql
 CREATE TABLE artifacts (
-    id INT,
-    name TEXT,
-    time VARCHAR(255),
-    creator VARCHAR(255),
-    level VARCHAR(255),
-    placeOfOrigin VARCHAR(255),
-    museum VARCHAR(255),
-    type VARCHAR(255),
-    size TEXT,
-    material TEXT,
-    description TEXT,
-    collectionUrl VARCHAR(255),
-    imageUrl TEXT,
-    name_tran TEXT,
-    time_tran VARCHAR(255),
-    creator_tran VARCHAR(255),
-    level_tran VARCHAR(255),
-    placeOfOrigin_tran VARCHAR(255),
-    museum_tran VARCHAR(255),
-    type_tran VARCHAR(255),
-    size_tran TEXT,
-    material_tran TEXT,
-    description_tran TEXT
+  id INT,
+  name TEXT,
+  time VARCHAR(255),
+  creator VARCHAR(255),
+  level VARCHAR(255),
+  placeOfOrigin VARCHAR(255),
+  museum VARCHAR(255),
+  type VARCHAR(255),
+  size TEXT,
+  material TEXT,
+  description TEXT,
+  collectionUrl VARCHAR(255),
+  imageUrl TEXT,
+  name_tran TEXT,
+  time_tran VARCHAR(255),
+  creator_tran VARCHAR(255),
+  level_tran VARCHAR(255),
+  placeOfOrigin_tran VARCHAR(255),
+  museum_tran VARCHAR(255),
+  type_tran VARCHAR(255),
+  size_tran TEXT,
+  material_tran TEXT,
+  description_tran TEXT
+);
+
+CREATE TABLE artifacts2 (
+  id INT,
+  name TEXT,
+  time VARCHAR(255),
+  creator VARCHAR(255),
+  level VARCHAR(255),
+  placeOfOrigin VARCHAR(255),
+  museum VARCHAR(255),
+  type VARCHAR(255),
+  size TEXT,
+  material TEXT,
+  description TEXT,
+  collectionUrl VARCHAR(255),
+  imageUrl TEXT
 );
 ```
 
@@ -53,8 +67,8 @@ CREATE TABLE artifacts (
 > 注意：必须将文件放在`C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\`里面才能导入！
 
 ```sql
-LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\modified.csv'
-INTO TABLE artifacts
+LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\modified_file.csv'
+INTO TABLE artifacts2
 character set utf8
 FIELDS TERMINATED BY ','
 ENCLOSED BY '\"'
