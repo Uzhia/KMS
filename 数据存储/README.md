@@ -7,6 +7,7 @@
 `a.py`文件用来将`modify1.csv`文件中的imageUrl中多个url转成一个url。
 
 > 注意：csv文件中的id不代表mysql中的id。
+> 所有csv文件编码均为`utf-8`(不是`utf-8 with bom`)，使用excel打开会中文乱码。
 
 # Mysql数据
 
