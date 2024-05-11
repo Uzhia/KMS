@@ -15,9 +15,11 @@ triples = []
 cnt = 0
 #保存对应文件及其不会出现在知识图谱中的详细信息
 details = {}
-
+relic_id = {}#保存藏品的对应entityId
+info_id = {}
+id = 0
 #merged-data.csv为总的数据
-with open('merged-data.csv', 'r', encoding='utf-8') as file:
+with open('data.csv', 'r', encoding='utf-8') as file:
     csv_reader = csv.reader(file)
     for row in csv_reader:
         #跳过第一行
@@ -31,6 +33,8 @@ with open('merged-data.csv', 'r', encoding='utf-8') as file:
             times[row[1]] = 1
         if times[row[1]] > 1:
             row[1] = row[1] + str(times[row[1]])
+        relic_id[row[1]] = id
+        id += 1
         #print(row[1])
         info_tmp = []
         #保存文物对应的详细信息
@@ -42,7 +46,6 @@ with open('merged-data.csv', 'r', encoding='utf-8') as file:
             if row[indexs[i]] == '无' or row[indexs[i]] == 'Unknown' or row[indexs[i]] == '未知':
                 continue
             triples.append([row[1], relations[i], str(row[indexs[i]])])
-
 # 将数据写入文件
 with open('triples.txt', 'w', encoding='utf-8') as output_file:
     for triple in triples:
@@ -68,17 +71,17 @@ with open('triples.txt', 'r', encoding='utf-8') as file:
         entity_t.append(elements[2])
 
 # 去除重复实体
-unique_entities = list(set(entity_h + entity_t))
+entity_1 = set(entity_h)
+entity_2 = set(entity_t) # 将所有entity_h中的实体添加到entity1中
 
-entity1 = set(entity_h)  # 将所有entity_h中的实体添加到entity1中
 # 保存节点文件
 with open("entities.csv", "w", newline='', encoding='utf-8') as csvf_entity:
     w_entity = csv.writer(csvf_entity)
     # 写入表头
     w_entity.writerow(("entity:ID", "name", ":LABEL", "创作者", "藏品尺寸", "藏品描述", "藏品网址", "图片链接"))
     # 写入节点信息
-    for idx, entity in enumerate(unique_entities):
-        LABEL = "relic" if entity in entity1 else "info"
+    for entity in entity_1:
+        LABEL = "relic"
         detail_info = details.get(entity, "")  # 使用字典的get方法，如果实体不存在于details中，则返回默认值""
         if detail_info != "":
             #此时节点是文物节点，将detail_info中保存的各个字段信息写入
@@ -87,19 +90,24 @@ with open("entities.csv", "w", newline='', encoding='utf-8') as csvf_entity:
             description = detail_info[2]
             collectionUrl = detail_info[3]
             imageUrl = detail_info[4]
-            w_entity.writerow(("e" + str(idx), entity, LABEL, creator, size, description, collectionUrl, imageUrl))
+            w_entity.writerow(("e" + str(relic_id[entity]), entity, LABEL, creator, size, description, collectionUrl, imageUrl))
         else:
-            #此时节点不是文物节点，detail_info信息置空字符串
-            w_entity.writerow(("e" + str(idx), entity, LABEL, detail_info))
+            print("ERROR")
+    idx = 0
+    for entity in entity_2:
+        LABEL = "info"
+        # 此时节点不是文物节点，detail_info信息置空字符串
+        w_entity.writerow(("e" + str(id + idx), entity, LABEL, detail_info))
+        info_id[entity] = id + idx
+        idx += 1
 
 # 保存关系文件
 with open("roles.csv", "w", newline='', encoding='utf-8') as csvf_roles:
     w_roles = csv.writer(csvf_roles)
     # 写入表头
     w_roles.writerow((":START_ID", ":END_ID", ":TYPE"))
-
     # 写入关系信息
     for h, r, t in zip(entity_h, role, entity_t):
-        w_roles.writerow(("e" + str(unique_entities.index(h)), "e" + str(unique_entities.index(t)), r))
+        w_roles.writerow(("e" + str(relic_id[h]), "e" + str(info_id[t]), r))
 
 
