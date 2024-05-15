@@ -71,8 +71,8 @@ with open('triples.txt', 'r', encoding='utf-8') as file:
         entity_t.append(elements[2])
 
 # 去除重复实体
-entity_1 = set(entity_h)# 将所有entity_h中的实体添加到entity1中
-entity_2 = set(entity_t) 
+entity_1 = set(entity_h)
+entity_2 = set(entity_t) # 将所有entity_h中的实体添加到entity1中
 
 # 保存节点文件
 with open("entities.csv", "w", newline='', encoding='utf-8') as csvf_entity:
@@ -97,7 +97,7 @@ with open("entities.csv", "w", newline='', encoding='utf-8') as csvf_entity:
     for entity in entity_2:
         LABEL = "info"
         # 此时节点不是文物节点，detail_info信息置空字符串
-        w_entity.writerow(("e" + str(id + idx), entity, LABEL, detail_info))
+        w_entity.writerow(("e" + str(id + idx), entity, LABEL, ""))
         info_id[entity] = id + idx
         idx += 1
 
